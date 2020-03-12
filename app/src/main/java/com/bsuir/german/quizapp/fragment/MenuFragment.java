@@ -22,20 +22,23 @@ public class MenuFragment extends Fragment {
 
         Button playButton = v.findViewById(R.id.play);
         Button recordsButton = v.findViewById(R.id.records);
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
 
         final RecordsFragment recordsFragment = new RecordsFragment();
+        final QuestionFragment questionFragment = new QuestionFragment();
+        final QuizTopFragment quizTopFragment = new QuizTopFragment();
 
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.play:
-//                        Intent intent = new Intent(getActivity(), Quiz.class);
-//                        startActivity(intent);
+                        fragmentTransaction.replace(R.id.topFragment,quizTopFragment);
+                        fragmentTransaction.replace(R.id.mainFragment,questionFragment);
+                        fragmentTransaction.commit();
                         break;
                     case R.id.records:
-                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.topFragment, recordsFragment);
+                        fragmentTransaction.replace(R.id.mainFragment, recordsFragment);
                         fragmentTransaction.commit();
                         break;
                 }
