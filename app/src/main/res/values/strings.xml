@@ -7,4 +7,6 @@
     <string name="quiz">Викторина</string>
     <string name="records">Таблица рекордов</string>
     <string name="next">Следующий вопрос</string>
+    <string name="lidersTable">Таблица лидеров</string>
+    <string name="recordsList">Список рекордов:</string>
 </resources>

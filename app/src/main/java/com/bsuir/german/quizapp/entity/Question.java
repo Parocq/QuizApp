@@ -1,4 +1,4 @@
-package com.bsuir.german.quizapp;
+package com.bsuir.german.quizapp.entity;
 
 public class Question {
     String question;
