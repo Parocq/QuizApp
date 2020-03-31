@@ -1,6 +1,5 @@
 package com.bsuir.german.quizapp;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -8,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.bsuir.german.quizapp.dao.DAOQuestion;
-import com.bsuir.german.quizapp.dao.DAOUser;
+import com.bsuir.german.quizapp.dao.DAORecord;
 import com.bsuir.german.quizapp.entity.Question;
 
 public class DBHelper extends SQLiteOpenHelper {
@@ -33,21 +32,22 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "answer4 TEXT,"
                 + "right_answer_id INTEGER);");
 
-        db.execSQL("CREATE TABLE USER ("
+        db.execSQL("CREATE TABLE RECORD ("
                 + "_id  INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "name TEXT,"
                 + "score INTEGER,"
                 + "date TEXT);");
 
+
         DAOQuestion daoQuestion = new DAOQuestion(db);
-        DAOUser daoUser = new DAOUser(db);
+        DAORecord daoRecord = new DAORecord(db);
 
-        daoQuestion.insertQuestion(new Question("hahaha?",10,"hehe","hoho","ahaha","heh",3));
-        daoQuestion.insertQuestion(new Question("O mae wa mo...",10,"shindeiry","nani?","kavai","arigato",1));
+        daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
+        daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
 
-        daoUser.insertUser(db,"German",24,"10.05.2020");
-        daoUser.insertUser(db,"Lesha",1,"10.05.2020");
-        daoUser.insertUser(db,"Vladimirovich",11,"10.05.2020");
+        daoRecord.insertRecord(db, "German", 24, "10.05.2020");
+        daoRecord.insertRecord(db, "Lesha", 1, "10.05.2020");
+        daoRecord.insertRecord(db, "Vladimirovich", 11, "10.05.2020");
     }
 
     @Override

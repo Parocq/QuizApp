@@ -4,45 +4,44 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.bsuir.german.quizapp.entity.Question;
-import com.bsuir.german.quizapp.entity.User;
+import com.bsuir.german.quizapp.entity.Record;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAOUser {
+public class DAORecord {
 
     private SQLiteDatabase db;
 
-    public DAOUser(SQLiteDatabase db) {
+    public DAORecord(SQLiteDatabase db) {
         this.db = db;
     }
 
 
-    public void insertUser(SQLiteDatabase db, String name,
-                                   int score, String date) {
+    public void insertRecord(SQLiteDatabase db, String name,
+                             int score, String date) {
         ContentValues userValues = new ContentValues();
         userValues.put("name", name);
         userValues.put("score", score);
         userValues.put("date", date);
 
-        db.insertOrThrow("USER", null, userValues);
+        db.insertOrThrow("RECORD", null, userValues);
     }
 
-    public void updateUser(User user, int id) {
-        db.execSQL("UPDATE QUESTION SET name = \"" + user.getName() + "\"," +
-                "score = \"" + user.getScore() + "\"," + "date = \"" + user.getDate() +
+    public void updateRecord(Record record, int id) {
+        db.execSQL("UPDATE QUESTION SET name = \"" + record.getName() + "\"," +
+                "score = \"" + record.getScore() + "\"," + "date = \"" + record.getDate() +
                 "\"where _id = \"" + id + "\";\"");
     }
 
-    public void deleteUser (int id) {
+    public void deleteRecord(int id) {
         db.execSQL("DELETE FROM USER where _id=" + id + ";");
     }
 
-    public List<User> selectAllUsersOrderedByScore() {
-        List<User> users = new ArrayList<>();
-        User user;
-        Cursor cursor = db.query("USER", new String[]{"name", "score", "date"},
+    public List<Record> selectAllRecordsOrderedByScore() {
+        List<Record> records = new ArrayList<>();
+        Record record;
+        Cursor cursor = db.query("RECORD", new String[]{"name", "score", "date"},
                 null, null, null, null, "score DESC");
         if (cursor.moveToFirst()) {
             do {
@@ -50,10 +49,10 @@ public class DAOUser {
                 int score = cursor.getInt(1);
                 String date = cursor.getString(2);
 
-                user = new User(name,score,date);
-                users.add(user);
+                record = new Record(name,score,date);
+                records.add(record);
             } while (cursor.moveToNext());
         }
-        return users;
+        return records;
     }
 }

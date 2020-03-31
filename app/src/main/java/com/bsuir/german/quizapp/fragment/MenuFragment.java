@@ -35,10 +35,12 @@ public class MenuFragment extends Fragment {
                     case R.id.play:
                         fragmentTransaction.replace(R.id.topFragment,quizTopFragment);
                         fragmentTransaction.replace(R.id.mainFragment,questionFragment);
+                        fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         break;
                     case R.id.records:
                         fragmentTransaction.replace(R.id.mainFragment, recordsFragment);
+                        fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         break;
                 }
