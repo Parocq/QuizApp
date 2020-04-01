@@ -44,6 +44,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
         daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
         daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
+        daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
+        daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
+        daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
+        daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
+        daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
+        daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
+        daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
+        daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
+        daoQuestion.insertQuestion(new Question("hahaha?", 10, "hehe", "hoho", "ahaha", "heh", 3));
+        daoQuestion.insertQuestion(new Question("O mae wa mo...", 10, "shindeiry", "nani?", "kavai", "arigato", 1));
+
 
         daoRecord.insertRecord(db, "German", 24, "10.05.2020");
         daoRecord.insertRecord(db, "Lesha", 1, "10.05.2020");

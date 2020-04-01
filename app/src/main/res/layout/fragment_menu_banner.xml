@@ -9,8 +9,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Викторина"
-        android:textSize="30sp"
-        android:gravity="center"/>
+        android:text="@string/Quiz"
+        android:textSize="38sp"
+        android:gravity="center"
+        android:fontFamily="@font/english_rose"
+        android:textColor="@color/colorBlack"
+        />
 
 </LinearLayout>

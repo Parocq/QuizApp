@@ -9,4 +9,5 @@
     <string name="next">Следующий вопрос</string>
     <string name="lidersTable">Таблица лидеров</string>
     <string name="recordsList">Список рекордов:</string>
+    <string name="Quiz">Викторина</string>
 </resources>

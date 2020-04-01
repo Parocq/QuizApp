@@ -65,7 +65,7 @@ public class DAOQuestion {
         return questions;
     }
 
-    public Question selectQuestionById(int id) {
+    public Question selectQuestionByPosition(int id) {
         Question q = null;
         Cursor cursor = db.query("QUESTION", new String[]{"question", "points", "answer1", "answer2",
                 "answer3", "answer4", "right_answer_id"}, "_id = ?", new String[]{Integer.toString(id)}, null, null, null);
@@ -81,5 +81,17 @@ public class DAOQuestion {
             q = new Question(question, points, answer1, answer2, answer3, answer4, right_answer_id);
         }
         return q;
+    }
+
+    public int getTableSize (){//через какое-то время вылетает.
+        int size = 1;
+        List<String> strings = new ArrayList<>();
+        Cursor cursor = db.query("QUESTION", new String[]{"question"}, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                size++;
+            } while (cursor.moveToNext());
+        }
+        return size;
     }
 }
