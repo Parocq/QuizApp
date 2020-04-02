@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.bsuir.german.quizapp.R;
 
@@ -16,25 +17,45 @@ import com.bsuir.german.quizapp.R;
  */
 public class QuizTopFragment extends Fragment {
 
-    QuestionFragment questionFragment = new QuestionFragment();
-    Button button1,button2,button3,button4;
+    private TextView questionNumber, points;
+    private Button goNextButton;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_quiz_top, null);
-        questionFragment.initializeViews(v);
-        Button next = v.findViewById(R.id.goNext);
+        initializeViews(v);
 
         View.OnClickListener onNextButtonClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                QuestionFragment questionFragment = (QuestionFragment) getFragmentManager().findFragmentByTag("QuestionFrag");
                 questionFragment.getNextQuestion();
             }
         };
-        next.setOnClickListener(onNextButtonClick);
+        goNextButton.setOnClickListener(onNextButtonClick);
 
         return v;
+    }
+
+    public void setPoints (String s){
+        points.setText(s);
+    }
+
+    public void setQuestionNumber (String s){
+        questionNumber.setText(s);
+    }
+
+    public String getPoints (){
+        return String.valueOf(points.getText());
+    }
+
+    public String getQuestionNumber (){
+        return String.valueOf(questionNumber.getText());
+    }
+
+    public void initializeViews(View v) {
+        goNextButton = v.findViewById(R.id.goNext);
+        questionNumber = v.findViewById(R.id.questionNum);
+        points = v.findViewById(R.id.points);
     }
 }

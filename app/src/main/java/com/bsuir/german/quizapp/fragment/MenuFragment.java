@@ -33,8 +33,8 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.play:
-                        fragmentTransaction.replace(R.id.topFragment,quizTopFragment);
-                        fragmentTransaction.replace(R.id.mainFragment,questionFragment);
+                        fragmentTransaction.replace(R.id.topFragment, quizTopFragment, "QuizTopFragment");
+                        fragmentTransaction.replace(R.id.mainFragment, questionFragment, "QuestionFrag");
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         break;
