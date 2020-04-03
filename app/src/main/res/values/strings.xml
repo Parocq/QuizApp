@@ -6,10 +6,22 @@
     <string name="start">Начать</string>
     <string name="quiz">Викторина</string>
     <string name="records">Таблица рекордов</string>
-    <string name="next">Следующий вопрос</string>
+    <string name="next">Next</string>
     <string name="lidersTable">Таблица лидеров</string>
     <string name="recordsList">Список рекордов:</string>
     <string name="Quiz">Викторина</string>
     <string name="_10">/10</string>
     <string name="_0">0</string>
+    <string name="gratz">Поздравляем!</string>
+    <string name="youGet">Вы набрали:</string>
+    <string name="points">очков!</string>
+    <string name="InputName">Введите ваше имя для занесения в таблицу рекордов:</string>
+    <string name="addRecord">Добавить рекорд!</string>
+    <string name="simple">Простой</string>
+    <string name="medium">Средний</string>
+    <string name="back">Назад</string>
+    <string name="hard">Тяжёлый</string>
+    <string name="random">Смешанный</string>
+    <string name="choose_complexity">Выберите уровень сложности:</string>
+    <string name="_1">1</string>
 </resources>

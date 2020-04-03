@@ -65,25 +65,47 @@ public class DAOQuestion {
         return questions;
     }
 
-    public Question selectQuestionByPosition(int id) {
-        Question q = null;
-        Cursor cursor = db.query("QUESTION", new String[]{"question", "points", "answer1", "answer2",
-                "answer3", "answer4", "right_answer_id"}, "_id = ?", new String[]{Integer.toString(id)}, null, null, null);
-        if (cursor.moveToFirst()) {
-            String question = cursor.getString(0);
-            int points = cursor.getInt(1);
-            String answer1 = cursor.getString(2);
-            String answer2 = cursor.getString(3);
-            String answer3 = cursor.getString(4);
-            String answer4 = cursor.getString(5);
-            int right_answer_id = cursor.getInt(6);
+//    public Question selectQuestionByPosition(int id) {
+//        Question q = null;
+//        Cursor cursor = db.query("QUESTION", new String[]{"question", "points", "answer1", "answer2",
+//                "answer3", "answer4", "right_answer_id"}, "_id = ?", new String[]{Integer.toString(id)}, null, null, null);
+//        if (cursor.moveToFirst()) {
+//            String question = cursor.getString(0);
+//            int points = cursor.getInt(1);
+//            String answer1 = cursor.getString(2);
+//            String answer2 = cursor.getString(3);
+//            String answer3 = cursor.getString(4);
+//            String answer4 = cursor.getString(5);
+//            int right_answer_id = cursor.getInt(6);
+//
+//            q = new Question(question, points, answer1, answer2, answer3, answer4, right_answer_id);
+//        }
+//        return q;
+//    }
 
-            q = new Question(question, points, answer1, answer2, answer3, answer4, right_answer_id);
+    public List<Question> selectAllQuestionsByLevel(int level) {
+        Question q = null;
+        List<Question> questionList = new ArrayList<>();
+        Cursor cursor = db.query("QUESTION", new String[]{"question", "points", "answer1", "answer2",
+                "answer3", "answer4", "right_answer_id"}, "points = ?", new String[]{Integer.toString(level)}, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String question = cursor.getString(0);
+                int points = cursor.getInt(1);
+                String answer1 = cursor.getString(2);
+                String answer2 = cursor.getString(3);
+                String answer3 = cursor.getString(4);
+                String answer4 = cursor.getString(5);
+                int right_answer_id = cursor.getInt(6);
+
+                q = new Question(question, points, answer1, answer2, answer3, answer4, right_answer_id);
+                questionList.add(q);
+            } while (cursor.moveToNext());
         }
-        return q;
+        return questionList;
     }
 
-    public int getTableSize (){//через какое-то время вылетает.
+    public int getTableSize() {//через какое-то время вылетает.
         int size = 1;
         List<String> strings = new ArrayList<>();
         Cursor cursor = db.query("QUESTION", new String[]{"question"}, null, null, null, null, null);

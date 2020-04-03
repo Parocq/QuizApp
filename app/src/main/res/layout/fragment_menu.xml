@@ -34,4 +34,89 @@
         app:layout_constraintEnd_toEndOf="@+id/play"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/play" />
+
+    <Button
+        android:id="@+id/buttonSimleLevel"
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp"
+        android:clickable="false"
+        android:text="@string/simple"
+        android:background="@color/colorEasy"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMediumLevel"
+        app:layout_constraintEnd_toEndOf="@+id/buttonMediumLevel"
+        app:layout_constraintStart_toStartOf="@+id/buttonMediumLevel" />
+
+    <Button
+        android:id="@+id/buttonMediumLevel"
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp"
+        android:clickable="false"
+        android:text="@string/medium"
+        android:background="@color/colorMedium"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonHardLevel"
+        app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintStart_toStartOf="@+id/play" />
+
+    <Button
+        android:id="@+id/buttonHardLevel"
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp"
+        android:clickable="false"
+        android:text="@string/hard"
+        android:background="@color/colorHard"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRandomLevel"
+        app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintStart_toStartOf="@+id/play" />
+
+    <Button
+        android:id="@+id/buttonRandomLevel"
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="30dp"
+        android:clickable="false"
+        android:text="@string/random"
+        android:background="@color/colorRandom"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBack"
+        app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintStart_toStartOf="@+id/play" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="60dp"
+        android:clickable="false"
+        android:text="@string/back"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintStart_toStartOf="@+id/play" />
+
+    <TextView
+        android:id="@+id/textLevels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="@string/choose_complexity"
+        android:visibility="invisible"
+        android:textSize="25sp"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSimleLevel"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSimleLevel"
+        app:layout_constraintStart_toStartOf="@+id/buttonSimleLevel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

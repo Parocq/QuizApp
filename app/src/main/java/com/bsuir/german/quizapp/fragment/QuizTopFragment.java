@@ -3,6 +3,7 @@ package com.bsuir.german.quizapp.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,5 +58,11 @@ public class QuizTopFragment extends Fragment {
         goNextButton = v.findViewById(R.id.goNext);
         questionNumber = v.findViewById(R.id.questionNum);
         points = v.findViewById(R.id.points);
+    }
+
+    public void incrementQuestionNumber (){
+        int number = Integer.parseInt(String.valueOf(questionNumber.getText()));
+        String s = Integer.parseInt(String.valueOf(questionNumber.getText()))+1+"";
+        questionNumber.setText(s);
     }
 }
