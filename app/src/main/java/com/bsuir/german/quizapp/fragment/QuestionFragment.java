@@ -69,13 +69,9 @@ public class QuestionFragment extends Fragment {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-                            button4.setBackgroundColor(Color.parseColor("#558B2F"));
-                        }
-                        button4.setBackgroundColor(Color.parseColor("#D84315"));
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+//                            button1.setBackgroundColor(Color.parseColor("#558B2F"));
+                        } else {
+//                            button1.setBackgroundColor(Color.parseColor("#D84315"));
                         }
                         getNextQuestion();
                         break;
@@ -84,13 +80,9 @@ public class QuestionFragment extends Fragment {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-                            button4.setBackgroundColor(Color.parseColor("#558B2F"));
-                        }
-                        button4.setBackgroundColor(Color.parseColor("#D84315"));
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+//                            button2.setBackgroundColor(Color.parseColor("#558B2F"));
+                        } else {
+//                            button2.setBackgroundColor(Color.parseColor("#D84315"));
                         }
                         getNextQuestion();
                         break;
@@ -99,13 +91,9 @@ public class QuestionFragment extends Fragment {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-                            button4.setBackgroundColor(Color.parseColor("#558B2F"));
-                        }
-                        button4.setBackgroundColor(Color.parseColor("#D84315"));
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+//                            button3.setBackgroundColor(Color.parseColor("#558B2F"));
+                        } else {
+//                            button3.setBackgroundColor(Color.parseColor("#D84315"));
                         }
                         getNextQuestion();
                         break;
@@ -114,13 +102,9 @@ public class QuestionFragment extends Fragment {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-                            button4.setBackgroundColor(Color.parseColor("#558B2F"));
-                        }
-                        button4.setBackgroundColor(Color.parseColor("#D84315"));
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+//                            button4.setBackgroundColor(Color.parseColor("#558B2F"));
+                        } else {
+//                            button4.setBackgroundColor(Color.parseColor("#D84315"));
                         }
                         getNextQuestion();
                         break;
@@ -134,7 +118,7 @@ public class QuestionFragment extends Fragment {
     }
 
     public void getNextQuestion() {
-        if (!questionsForThisTime.isEmpty()){
+        if (!questionsForThisTime.isEmpty()) {
 //        Question newQuestion = getNewQuestion();
             setupNewQuestion(questionsForThisTime.get(0));
             setOnClickListeners(questionsForThisTime.get(0));
@@ -144,7 +128,7 @@ public class QuestionFragment extends Fragment {
             ResultsFragment resultsFragment = new ResultsFragment();
             MenuBannerFragment banner = new MenuBannerFragment();
             Bundle bundle = new Bundle();
-            bundle.putInt("points",Integer.parseInt(quizTopFragment.getPoints()));
+            bundle.putInt("points", Integer.parseInt(quizTopFragment.getPoints()));
             resultsFragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.mainFragment, resultsFragment, "ResultsFragment");
@@ -168,18 +152,9 @@ public class QuestionFragment extends Fragment {
         }
     }
 
-    public int generateNumber (int size){
+    public int generateNumber(int size) {
         return (int) (Math.random() * size - 1);
     }
-
-//    public int getRandomQuestions() {
-//        int size = daoQuestion.getTableSize();
-//        int num = (int) (Math.random() * size - 1);
-//        if (size == usedQuestion.size()) {
-//            num = -1;
-//        }
-//        return num;
-//    }
 
     public void setupNewQuestion(Question question) {
         button1.setText(question.getAnswer1());
@@ -187,63 +162,9 @@ public class QuestionFragment extends Fragment {
         button3.setText(question.getAnswer3());
         button4.setText(question.getAnswer4());
         questionField.setText(question.getQuestion());
+//        button1.setBackgroundColor(Color.parseColor("#999999"));
+//        button2.setBackgroundColor(Color.parseColor("#999999"));
+//        button3.setBackgroundColor(Color.parseColor("#999999"));
+//        button4.setBackgroundColor(Color.parseColor("#999999"));
     }
-
-//    public Question getNewQuestion() {
-//        Question question;
-//        List<Question> questionList = null;
-//        int questionId = 0;
-//
-//        boolean alreadyMentioned = true;
-//        while (alreadyMentioned) {
-//            if (level == 0){
-//                questionId = getRandomQuestionId();
-//            }
-//            else{
-//                questionList = new ArrayList<>();
-//                questionList = daoQuestion.selectAllQuestionsByLevel(level);
-//                int num = (int) (Math.random() * questionList.size() - 1);
-//                questionId = num;
-//            }
-//            if (questionId == -1) {
-//                usedQuestion.clear();
-//                Toast toast = Toast.makeText( getContext(),"Вопросы в базе данных кончились.\n" +
-//                        " Теперь вопросы могут повторяться", Toast.LENGTH_LONG);
-//                toast.show();
-//            } else {
-//                alreadyMentioned = false;
-//                for (Integer q : usedQuestion) {
-//                    if (q == questionId) {
-//                        alreadyMentioned = true;
-//                        break;
-//                    }
-//                }
-//            }
-//        }
-//        usedQuestion.add(questionId);
-//        if (level == 0){
-//            question = daoQuestion.selectQuestionByPosition(questionId + 1);
-//        } else {
-//            question = questionList.get(questionId);
-//        }
-//
-//        return question;
-//    }
-
-
-//    public int getRandomQuestionIdByLevel (){
-//        List<Question> questionList = new ArrayList<>();
-//        questionList = daoQuestion.selectAllQuestionsByLevel(level);
-//        return questionList.size();
-//    }
-//
-//    public int getQuestionIdByLevel() {
-//        int size = daoQuestion.getTableSizeByLevel(level);
-//        int num = (int) (Math.random() * size - 1);
-//        if (size == usedQuestion.size()) {
-//            return -1;
-//        }
-//        return num;
-//    }
-
 }

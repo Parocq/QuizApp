@@ -5,6 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#555</color>
+    <color name="colorLowGray">#999</color>
     <color name="colorHard">#D84315</color>
     <color name="colorMedium">#F9A825</color>
     <color name="colorEasy">#558B2F</color>
