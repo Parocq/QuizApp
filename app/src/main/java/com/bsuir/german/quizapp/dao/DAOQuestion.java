@@ -20,6 +20,7 @@ public class DAOQuestion {
 
     public void insertQuestion(Question question) {
         ContentValues questionValues = new ContentValues();
+        questionValues.put("image_name", question.getImageName());
         questionValues.put("question", question.getQuestion());
         questionValues.put("points", question.getPoints());
         questionValues.put("answer1", question.getAnswer1());
@@ -46,19 +47,20 @@ public class DAOQuestion {
     public List<Question> selectAllQuestions() {
         List<Question> questions = new ArrayList<>();
         Question q;
-        Cursor cursor = db.query("QUESTION", new String[]{"question", "points", "answer1", "answer2",
+        Cursor cursor = db.query("QUESTION", new String[]{"image_name", "question", "points", "answer1", "answer2",
                 "answer3", "answer4", "right_answer_id"}, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
-                String question = cursor.getString(0);
-                int points = cursor.getInt(1);
-                String answer1 = cursor.getString(2);
-                String answer2 = cursor.getString(3);
-                String answer3 = cursor.getString(4);
-                String answer4 = cursor.getString(5);
-                int right_answer_id = cursor.getInt(6);
+                String imageName = cursor.getString(0);
+                String question = cursor.getString(1);
+                int points = cursor.getInt(2);
+                String answer1 = cursor.getString(3);
+                String answer2 = cursor.getString(4);
+                String answer3 = cursor.getString(5);
+                String answer4 = cursor.getString(6);
+                int right_answer_id = cursor.getInt(7);
 
-                q = new Question(question, points, answer1, answer2, answer3, answer4, right_answer_id);
+                q = new Question(imageName, question, points, answer1, answer2, answer3, answer4, right_answer_id);
                 questions.add(q);
             } while (cursor.moveToNext());
         }
@@ -86,19 +88,20 @@ public class DAOQuestion {
     public List<Question> selectAllQuestionsByLevel(int level) {
         Question q = null;
         List<Question> questionList = new ArrayList<>();
-        Cursor cursor = db.query("QUESTION", new String[]{"question", "points", "answer1", "answer2",
+        Cursor cursor = db.query("QUESTION", new String[]{"image_name", "question", "points", "answer1", "answer2",
                 "answer3", "answer4", "right_answer_id"}, "points = ?", new String[]{Integer.toString(level)}, null, null, null);
         if (cursor.moveToFirst()) {
             do {
-                String question = cursor.getString(0);
-                int points = cursor.getInt(1);
-                String answer1 = cursor.getString(2);
-                String answer2 = cursor.getString(3);
-                String answer3 = cursor.getString(4);
-                String answer4 = cursor.getString(5);
-                int right_answer_id = cursor.getInt(6);
+                String imageName = cursor.getString(0);
+                String question = cursor.getString(1);
+                int points = cursor.getInt(2);
+                String answer1 = cursor.getString(3);
+                String answer2 = cursor.getString(4);
+                String answer3 = cursor.getString(5);
+                String answer4 = cursor.getString(6);
+                int right_answer_id = cursor.getInt(7);
 
-                q = new Question(question, points, answer1, answer2, answer3, answer4, right_answer_id);
+                q = new Question(imageName, question, points, answer1, answer2, answer3, answer4, right_answer_id);
                 questionList.add(q);
             } while (cursor.moveToNext());
         }

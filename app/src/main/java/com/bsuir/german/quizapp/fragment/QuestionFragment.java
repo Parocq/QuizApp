@@ -1,6 +1,6 @@
 package com.bsuir.german.quizapp.fragment;
 
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 //import android.app.Fragment;
@@ -11,13 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.dao.DAOQuestion;
 import com.bsuir.german.quizapp.entity.Question;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +28,9 @@ import static com.bsuir.german.quizapp.activity.MainActivity.db;
 public class QuestionFragment extends Fragment {
 
     private Button button1, button2, button3, button4;
+    private ImageView imageView;
     private TextView questionField;
     private DAOQuestion daoQuestion = new DAOQuestion(db);
-    //    private static ArrayList<Integer> usedQuestion = new ArrayList<>();
     private QuizTopFragment quizTopFragment;
     private static int level;
     private static List<Question> questionsForThisTime;
@@ -57,6 +59,7 @@ public class QuestionFragment extends Fragment {
         button3 = v.findViewById(R.id.answer3);
         button4 = v.findViewById(R.id.answer4);
         questionField = v.findViewById(R.id.question);
+        imageView = v.findViewById(R.id.imageView);
     }
 
     public void setOnClickListeners(final Question question) {
@@ -162,6 +165,20 @@ public class QuestionFragment extends Fragment {
         button3.setText(question.getAnswer3());
         button4.setText(question.getAnswer4());
         questionField.setText(question.getQuestion());
+
+        String filename = question.getImageName();
+//        String filename = "second_level/in.webp";
+        InputStream inputStream = null;
+        try{
+            inputStream = getActivity().getApplicationContext().getAssets().open(filename);
+            Drawable d = Drawable.createFromStream(inputStream, null);
+            imageView.setImageDrawable(d);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
 //        button1.setBackgroundColor(Color.parseColor("#999999"));
 //        button2.setBackgroundColor(Color.parseColor("#999999"));
 //        button3.setBackgroundColor(Color.parseColor("#999999"));

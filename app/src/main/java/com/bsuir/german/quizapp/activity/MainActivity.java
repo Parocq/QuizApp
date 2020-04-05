@@ -3,6 +3,8 @@ package com.bsuir.german.quizapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
@@ -19,10 +21,12 @@ public class MainActivity extends AppCompatActivity {
     //    private SQLiteOpenHelper dbHelper;
     public static SQLiteDatabase db;
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         MenuFragment menuFrag = new MenuFragment();
         MenuBannerFragment banner = new MenuBannerFragment();
@@ -31,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.add(R.id.mainFragment, menuFrag, "MenuFragment");
         fragmentTransaction.add(R.id.topFragment, banner);
         fragmentTransaction.commit();
+
+        Bundle bundle = new Bundle();
 
         DBHelper dbHelper = new DBHelper(this);
         try {
