@@ -73,7 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         daoQuestion.insertQuestion(new Question("Столица Самоа?", 10, "Афега", "Паго-Паго", "Мклифануа", "Апиа", 4));
         daoQuestion.insertQuestion(new Question("Столица Новой Зеландии?", 10, "Окленд", "Роторуа", "Веллингтон", "Нельсон", 3));
 
-        daoQuestion.insertQuestion(new Question("Столица Канады?", 15, "Оттава", "Торонто", "Монреаль", "Эдмонтон", 1));
+        daoQuestion.insertQuestion(new Question("Столица Канады?", 15, "Оттава", "Торонто", "Монреаль", "Эдмонтон", 2));
         daoQuestion.insertQuestion(new Question("Столица Багамских островов?", 15, "Фрипорт", "Элис Таун", "Нассау", "Данмор-Таун", 3));
         daoQuestion.insertQuestion(new Question("Столица Судана?", 15, "Омдурман", "Кассала", "Ньяла", "Хартум", 4 ));
         daoQuestion.insertQuestion(new Question("Столица Парагвай?", 15, "Энкарнасьон", "Асунсьон", "Консепсьон", "Коронель-Овьедо", 2));

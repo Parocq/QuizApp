@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bsuir.german.quizapp.R;
@@ -19,7 +20,7 @@ import com.bsuir.german.quizapp.R;
 public class QuizTopFragment extends Fragment {
 
     private TextView questionNumber, points;
-    private Button goNextButton;
+    private ImageButton goNextButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

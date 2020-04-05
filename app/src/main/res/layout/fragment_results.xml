@@ -13,8 +13,10 @@
         android:paddingTop="30dp"
         android:text="@string/gratz"
         android:textColor="@color/colorBlack"
+        android:fontFamily="@font/english_rose"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +92,9 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/addRecord"
+        app:layout_constraintBottom_toTopOf="@+id/dateFinished"
         app:layout_constraintEnd_toEndOf="@+id/inputNameField"
         app:layout_constraintStart_toStartOf="@+id/inputNameField"
         app:layout_constraintTop_toBottomOf="@+id/inputNameField" />

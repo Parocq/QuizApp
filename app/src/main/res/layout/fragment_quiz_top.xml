@@ -54,11 +54,10 @@
 
         </LinearLayout>
 
-        <Button
+        <ImageButton
             android:id="@+id/goNext"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:text="@string/next"
-            android:textSize="16sp"></Button>
+            android:src="@drawable/ic_navigate_next_black_24dp" />
 </LinearLayout>

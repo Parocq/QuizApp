@@ -109,14 +109,16 @@
         android:id="@+id/textLevels"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="@string/choose_complexity"
-        android:visibility="invisible"
-        android:textSize="25sp"
         android:textColor="@color/colorBlack"
+        android:textSize="25sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonSimleLevel"
         app:layout_constraintEnd_toEndOf="@+id/buttonSimleLevel"
-        app:layout_constraintStart_toStartOf="@+id/buttonSimleLevel" />
+        app:layout_constraintStart_toStartOf="@+id/buttonSimleLevel"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
