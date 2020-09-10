@@ -47,51 +47,21 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/linear_layout_question_fragment_top_line"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-            <Button
-                android:id="@+id/answer1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/background"
-                android:textAllCaps="false"
-                android:textSize="20sp">
-            </Button>
-            <Button
-                android:id="@+id/answer2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-                android:layout_weight="1"
-                android:textAllCaps="false"
-                android:textSize="20sp">
-            </Button>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/linear_layout_question_fragment_bottom_line"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-            <Button
-                android:id="@+id/answer3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background"
-                android:layout_weight="1"
-                android:textAllCaps="false"
-                android:textSize="20sp">
-            </Button>
-            <Button
-                android:id="@+id/answer4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background"
-                android:layout_weight="1"
-                android:textAllCaps="false"
-                android:textSize="20sp">
-            </Button>
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
         </LinearLayout>
     </LinearLayout>
 
