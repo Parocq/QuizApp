@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.dao.DAOQuestion;
@@ -52,7 +53,7 @@ public class QuestionFragment extends Fragment {
         fillQuestionsForQuiz();
 
         buttonsArray = new ArrayList<>(4);
-        generateButtons(0, false);
+        generateButtons();
         getNextQuestion();
         return v;
     }
@@ -64,28 +65,18 @@ public class QuestionFragment extends Fragment {
         imageView = v.findViewById(R.id.imageView);
     }
 
-    public void generateButtons(int number, boolean wasRight) {
-        int color;
-        if (wasRight) {
-            color = getResources().getColor(R.color.colorEasy);
-        } else  color = getResources().getColor(R.color.colorHard);
-
+    public void generateButtons() {
         ViewGroup.LayoutParams layoutParams =
                 new LinearLayout.LayoutParams(
                         0,
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         (float) (1.0)
                 );
-        int colorizedCounter = 1;
+
         for (int j = 1; j < 3; j++) {
             Button button = new Button(getContext());
             button.setId(100 + j);
             linearLayoutTop.addView(button, layoutParams);
-
-            if (colorizedCounter == number){
-                button.setBackgroundColor(color);
-            }
-            colorizedCounter++;
 
             buttonsArray.add(button);
         }
@@ -94,122 +85,27 @@ public class QuestionFragment extends Fragment {
             button.setId(102 + j);
             linearLayoutBottom.addView(button, layoutParams);
 
-            if (colorizedCounter == number){
-                button.setBackgroundColor(color);
-            }
-            colorizedCounter++;
-
             buttonsArray.add(button);
         }
-        colorizedCounter = 1;
-    }
-
-    private void removeAllButtons() {
-        linearLayoutBottom.removeAllViews();
-        linearLayoutTop.removeAllViews();
     }
 
     public void setOnClickListeners(final Question question) {
-//        for (int i = 1; i < 5; i++) {
-//            if (question.getRightAnswerId() == i){
-//                quizTopFragment.setPoints(
-//                        String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
-//                );
-//                buttonsArray.get(i).setBackgroundColor(Color.parseColor("#558B2F"));
-//            } else {
-//                buttonsArray.get(i).setBackgroundColor(Color.parseColor("#D84315"));
-//            }
-//
-//            try {
-//                Thread.sleep(1000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            removeAllButtons();
-//            generateButtons();
-//
-//            getNextQuestion();
-//        }
+
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case 101:
-                        if (question.getRightAnswerId() == 1) {
+                for (int i = 101; i < 105; i++) {
+                    if (v.getId() == i) {
+                        if (question.getRightAnswerId() == i - 100) {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-                            removeAllButtons();
-                            generateButtons(1, true);
+                            Toast.makeText(getContext(),"Верно", Toast.LENGTH_SHORT).show();
                         } else {
-                            removeAllButtons();
-                            generateButtons(1, false);
+                            Toast.makeText(getContext(),"Не верно", Toast.LENGTH_SHORT).show();
                         }
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
                         getNextQuestion();
-                        break;
-                    case 102:
-                        if (question.getRightAnswerId() == 2) {
-                            quizTopFragment.setPoints(
-                                    String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
-                            );
-                            removeAllButtons();
-                            generateButtons(2, true);
-                        } else {
-                            removeAllButtons();
-                            generateButtons(2, false);
-                        }
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        getNextQuestion();
-                        break;
-                    case 103:
-                        if (question.getRightAnswerId() == 3) {
-                            quizTopFragment.setPoints(
-                                    String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
-                            );
-                            removeAllButtons();
-                            generateButtons(3, true);
-                        } else {
-                            removeAllButtons();
-                            generateButtons(3, false);
-                        }
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        getNextQuestion();
-                        break;
-                    case 104:
-                        if (question.getRightAnswerId() == 4) {
-                            quizTopFragment.setPoints(
-                                    String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
-                            );
-                            removeAllButtons();
-                            generateButtons(4, true);
-                        } else {
-                            removeAllButtons();
-                            generateButtons(4, false);
-                        }
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        getNextQuestion();
-                        break;
+                    }
                 }
             }
         };
@@ -221,9 +117,6 @@ public class QuestionFragment extends Fragment {
 
     public void getNextQuestion() {
         if (!questionsForThisTime.isEmpty()) {
-            removeAllButtons();
-            generateButtons(0,false);
-
             setupNewQuestion(questionsForThisTime.get(0));
             setOnClickListeners(questionsForThisTime.get(0));
             questionsForThisTime.remove(0);

@@ -15,6 +15,8 @@ import com.bsuir.german.quizapp.DBHelper;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.fragment.MenuBannerFragment;
 import com.bsuir.german.quizapp.fragment.MenuFragment;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
 
         MenuFragment menuFrag = new MenuFragment();
         MenuBannerFragment banner = new MenuBannerFragment();
