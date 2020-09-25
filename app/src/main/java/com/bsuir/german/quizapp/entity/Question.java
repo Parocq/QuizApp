@@ -1,6 +1,8 @@
 package com.bsuir.german.quizapp.entity;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
     private String question, imageName;
     private int points;
     private String answer1,answer2,answer3,answer4;
