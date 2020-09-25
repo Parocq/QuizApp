@@ -1,5 +1,6 @@
 package com.bsuir.german.quizapp.fragment;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bsuir.german.quizapp.R;
@@ -27,7 +29,9 @@ import static com.bsuir.german.quizapp.activity.MainActivity.db;
 
 public class QuestionFragment extends Fragment {
 
-    private Button button1, button2, button3, button4;
+    //    private Button button1, button2, button3, button4;
+    private ArrayList<Button> buttonsArray;
+    private LinearLayout linearLayoutTop, linearLayoutBottom;
     private ImageView imageView;
     private TextView questionField;
     private DAOQuestion daoQuestion = new DAOQuestion(db);
@@ -44,85 +48,182 @@ public class QuestionFragment extends Fragment {
             level = bundle.getInt("level");
         }
         initializeViews(v);
-//        usedQuestion.add(-1);
         questionsForThisTime = new ArrayList<>();
         fillQuestionsForQuiz();
 
+        buttonsArray = new ArrayList<>(4);
+        generateButtons(0, false);
         getNextQuestion();
-
         return v;
     }
 
     public void initializeViews(View v) {
-        button1 = v.findViewById(R.id.answer1);
-        button2 = v.findViewById(R.id.answer2);
-        button3 = v.findViewById(R.id.answer3);
-        button4 = v.findViewById(R.id.answer4);
+        linearLayoutTop = v.findViewById(R.id.linear_layout_question_fragment_top_line);
+        linearLayoutBottom = v.findViewById(R.id.linear_layout_question_fragment_bottom_line);
         questionField = v.findViewById(R.id.question);
         imageView = v.findViewById(R.id.imageView);
     }
 
+    public void generateButtons(int number, boolean wasRight) {
+        int color;
+        if (wasRight) {
+            color = getResources().getColor(R.color.colorEasy);
+        } else  color = getResources().getColor(R.color.colorHard);
+
+        ViewGroup.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(
+                        0,
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        (float) (1.0)
+                );
+        int colorizedCounter = 1;
+        for (int j = 1; j < 3; j++) {
+            Button button = new Button(getContext());
+            button.setId(100 + j);
+            linearLayoutTop.addView(button, layoutParams);
+
+            if (colorizedCounter == number){
+                button.setBackgroundColor(color);
+            }
+            colorizedCounter++;
+
+            buttonsArray.add(button);
+        }
+        for (int j = 1; j < 3; j++) {
+            Button button = new Button(getContext());
+            button.setId(102 + j);
+            linearLayoutBottom.addView(button, layoutParams);
+
+            if (colorizedCounter == number){
+                button.setBackgroundColor(color);
+            }
+            colorizedCounter++;
+
+            buttonsArray.add(button);
+        }
+        colorizedCounter = 1;
+    }
+
+    private void removeAllButtons() {
+        linearLayoutBottom.removeAllViews();
+        linearLayoutTop.removeAllViews();
+    }
+
     public void setOnClickListeners(final Question question) {
+//        for (int i = 1; i < 5; i++) {
+//            if (question.getRightAnswerId() == i){
+//                quizTopFragment.setPoints(
+//                        String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
+//                );
+//                buttonsArray.get(i).setBackgroundColor(Color.parseColor("#558B2F"));
+//            } else {
+//                buttonsArray.get(i).setBackgroundColor(Color.parseColor("#D84315"));
+//            }
+//
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            removeAllButtons();
+//            generateButtons();
+//
+//            getNextQuestion();
+//        }
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.answer1:
+                    case 101:
                         if (question.getRightAnswerId() == 1) {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-//                            button1.setBackgroundColor(Color.parseColor("#558B2F"));
+                            removeAllButtons();
+                            generateButtons(1, true);
                         } else {
-//                            button1.setBackgroundColor(Color.parseColor("#D84315"));
+                            removeAllButtons();
+                            generateButtons(1, false);
                         }
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                         getNextQuestion();
                         break;
-                    case R.id.answer2:
+                    case 102:
                         if (question.getRightAnswerId() == 2) {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-//                            button2.setBackgroundColor(Color.parseColor("#558B2F"));
+                            removeAllButtons();
+                            generateButtons(2, true);
                         } else {
-//                            button2.setBackgroundColor(Color.parseColor("#D84315"));
+                            removeAllButtons();
+                            generateButtons(2, false);
                         }
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                         getNextQuestion();
                         break;
-                    case R.id.answer3:
+                    case 103:
                         if (question.getRightAnswerId() == 3) {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-//                            button3.setBackgroundColor(Color.parseColor("#558B2F"));
+                            removeAllButtons();
+                            generateButtons(3, true);
                         } else {
-//                            button3.setBackgroundColor(Color.parseColor("#D84315"));
+                            removeAllButtons();
+                            generateButtons(3, false);
                         }
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                         getNextQuestion();
                         break;
-                    case R.id.answer4:
+                    case 104:
                         if (question.getRightAnswerId() == 4) {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-//                            button4.setBackgroundColor(Color.parseColor("#558B2F"));
+                            removeAllButtons();
+                            generateButtons(4, true);
                         } else {
-//                            button4.setBackgroundColor(Color.parseColor("#D84315"));
+                            removeAllButtons();
+                            generateButtons(4, false);
                         }
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
                         getNextQuestion();
                         break;
                 }
             }
         };
-        button1.setOnClickListener(clickListener);
-        button2.setOnClickListener(clickListener);
-        button3.setOnClickListener(clickListener);
-        button4.setOnClickListener(clickListener);
+
+        for (Button b : buttonsArray) {
+            b.setOnClickListener(clickListener);
+        }
     }
 
     public void getNextQuestion() {
         if (!questionsForThisTime.isEmpty()) {
-//        Question newQuestion = getNewQuestion();
+            removeAllButtons();
+            generateButtons(0,false);
+
             setupNewQuestion(questionsForThisTime.get(0));
             setOnClickListeners(questionsForThisTime.get(0));
             questionsForThisTime.remove(0);
@@ -160,28 +261,21 @@ public class QuestionFragment extends Fragment {
     }
 
     public void setupNewQuestion(Question question) {
-        button1.setText(question.getAnswer1());
-        button2.setText(question.getAnswer2());
-        button3.setText(question.getAnswer3());
-        button4.setText(question.getAnswer4());
+        buttonsArray.get(0).setText(question.getAnswer1());
+        buttonsArray.get(1).setText(question.getAnswer2());
+        buttonsArray.get(2).setText(question.getAnswer3());
+        buttonsArray.get(3).setText(question.getAnswer4());
         questionField.setText(question.getQuestion());
 
         String filename = question.getImageName();
-//        String filename = "second_level/in.webp";
         InputStream inputStream = null;
-        try{
+        try {
             inputStream = getActivity().getApplicationContext().getAssets().open(filename);
             Drawable d = Drawable.createFromStream(inputStream, null);
             imageView.setImageDrawable(d);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-//        button1.setBackgroundColor(Color.parseColor("#999999"));
-//        button2.setBackgroundColor(Color.parseColor("#999999"));
-//        button3.setBackgroundColor(Color.parseColor("#999999"));
-//        button4.setBackgroundColor(Color.parseColor("#999999"));
     }
 }
