@@ -40,10 +40,14 @@ public class RecordsFragment extends Fragment {
         return v;
     }
 
-    public List<Record> fillRecordList(List<Record> recordList) {
-
+    private List<Record> fillRecordList(List<Record> recordList) {
         recordList = daoRecord.selectAllRecordsOrderedByScore();
 
         return recordList;
     }
+
+//    private List<Record> fillRecordList(){
+//
+//        return
+//    }
 }

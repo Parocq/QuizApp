@@ -8,6 +8,10 @@ public class Question implements Serializable {
     private String answer1,answer2,answer3,answer4;
     private int rightAnswerId;
 
+    public Question () {
+
+    }
+
     public Question(String imageName, String question, int points, String answer1, String answer2, String answer3, String answer4, int rightAnswerId) {
         this.imageName = imageName;
         this.question = question;
@@ -17,6 +21,15 @@ public class Question implements Serializable {
         this.answer3 = answer3;
         this.answer4 = answer4;
         this.rightAnswerId = rightAnswerId;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "question='" + question + '\'' +
+                ", imageName='" + imageName + '\'' +
+                ", points=" + points +
+                '}';
     }
 
     public String getImageName() {

@@ -17,6 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bsuir.german.quizapp.BuildConfig;
+import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.dao.DAOQuestion;
 import com.bsuir.german.quizapp.entity.Question;
@@ -135,12 +137,17 @@ public class QuestionFragment extends Fragment {
         }
     }
 
+    //тут берутся все вопросы и выбираются 10 для захода.
     public void fillQuestionsForQuiz() {
-        List<Question> allQuestions;
+        List<Question> allQuestions = new ArrayList<>();
         if (level == 0) {
-            allQuestions = daoQuestion.selectAllQuestions();
+//            allQuestions = daoQuestion.selectAllQuestions();
+            allQuestions = new FirebaseInstance().getQuestions();
         } else {
-            allQuestions = daoQuestion.selectAllQuestionsByLevel(level);
+//            allQuestions = daoQuestion.selectAllQuestionsByLevel(level);
+            //выбирает только вопросы с нужной сложностью
+            allQuestions = new FirebaseInstance().getQuestions(level);
+
         }
         for (int i = 0; i < 10; i++) {
             int num = generateNumber(allQuestions.size());
