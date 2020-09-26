@@ -35,7 +35,7 @@ public class RecordRecyclerViewAdapter extends RecyclerView.Adapter<RecordRecycl
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.number.setText(""+position+1);
+        holder.number.setText(""+(position+1));
         holder.name.setText(recordList.get(position).getName());
         holder.date.setText(recordList.get(position).getDate());
         holder.score.setText(""+recordList.get(position).getScore());

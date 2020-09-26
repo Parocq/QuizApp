@@ -5,10 +5,27 @@ public class Record {
     private String name;
     private String date;
 
+    public Record(){
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
     public Record(String name, int score, String date) {
         this.name = name;
         this.score = score;
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "score=" + score +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 
     public int getScore() {

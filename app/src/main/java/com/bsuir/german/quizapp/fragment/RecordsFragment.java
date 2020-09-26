@@ -2,14 +2,19 @@ package com.bsuir.german.quizapp.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.adapter.RecordRecyclerViewAdapter;
 import com.bsuir.german.quizapp.dao.DAORecord;
@@ -29,6 +34,7 @@ public class RecordsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_records, container, false);
+
         List<Record> recordList = new ArrayList<>();
         recordList = fillRecordList(recordList);
 
@@ -41,12 +47,14 @@ public class RecordsFragment extends Fragment {
     }
 
     private List<Record> fillRecordList(List<Record> recordList) {
-        recordList = daoRecord.selectAllRecordsOrderedByScore();
+        recordList = new FirebaseInstance().getRecords();
+        Log.e("TAG", "fillRecordList: " + recordList.size() );
+        //daoRecord.selectAllRecordsOrderedByScore();
 
         return recordList;
     }
 
-//    private List<Record> fillRecordList(){
+    //    private List<Record> fillRecordList(){
 //
 //        return
 //    }

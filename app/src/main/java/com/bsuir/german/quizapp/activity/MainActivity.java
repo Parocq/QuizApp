@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -20,14 +21,20 @@ import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.dao.DAOQuestion;
 import com.bsuir.german.quizapp.entity.Question;
+import com.bsuir.german.quizapp.entity.Record;
 import com.bsuir.german.quizapp.fragment.MenuBannerFragment;
 import com.bsuir.german.quizapp.fragment.MenuFragment;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     //    private SQLiteOpenHelper dbHelper;
     public static SQLiteDatabase db;
+
+    private List<Record> a;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @Override
@@ -46,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(this);
         FirebaseInstance.extractQuestionsFromFirebase();
+        FirebaseInstance.extractRecordsFromFirebase();
 
 //        DBHelper dbHelper = new DBHelper(this);
 //        try {
@@ -60,5 +68,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        FirebaseInstance.extractRecordsFromFirebase();
+        return super.onOptionsItemSelected(item);
     }
 }

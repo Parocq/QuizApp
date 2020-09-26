@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bsuir.german.quizapp.entity.Question;
+import com.bsuir.german.quizapp.entity.Record;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,14 +22,15 @@ public class FirebaseInstance {
     public static DatabaseReference firebaseQuestionsReference = firebaseDatabase.getReference("questions");
     public static DatabaseReference firebaseRecordsReference = firebaseDatabase.getReference("records");
     private static List<Question> allQuestions = new ArrayList<>();
+    private static List<Record> allRecords = new ArrayList<>();
 
 
     public static void extractQuestionsFromFirebase() {
+        allQuestions.clear();
         firebaseQuestionsReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Question question = snapshot.getValue(Question.class);
-                Log.e("TAG", "onChildAdded: received object $question");
                 allQuestions.add(question);
             }
 
@@ -52,7 +54,6 @@ public class FirebaseInstance {
 
             }
         });
-
     }
 
     public List<Question> getQuestions() {
@@ -68,6 +69,48 @@ public class FirebaseInstance {
         }
         return list;
     }
+
+    public static void extractRecordsFromFirebase() {
+        allRecords.clear();
+        firebaseRecordsReference.orderByChild("score").limitToFirst(50).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Record record = snapshot.getValue(Record.class);
+                Log.e("TAG", "onChildAdded: received object record");
+                allRecords.add(record);
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public List<Record> getRecords(){
+        return allRecords;
+    }
+
+    /*
+            DatabaseReference reference = FirebaseInstance.firebaseRecordsReference.child("/record_2");
+        Record record = new Record("Test2",0,"10-20-3000");
+        reference.setValue(record);
+     */
 
     //возвращает данные каждый раз как происходит обновление в firebase
     /*myRef.addValueEventListener(new ValueEventListener() {
