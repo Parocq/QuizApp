@@ -22,6 +22,7 @@ import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.dao.DAOQuestion;
 import com.bsuir.german.quizapp.entity.Question;
+import com.bumptech.glide.Glide;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -102,9 +103,9 @@ public class QuestionFragment extends Fragment {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
-                            Toast.makeText(getContext(),"Верно", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Верно", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(getContext(),"Не верно", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Не верно", Toast.LENGTH_SHORT).show();
                         }
                         getNextQuestion();
                     }
@@ -167,15 +168,8 @@ public class QuestionFragment extends Fragment {
         buttonsArray.get(3).setText(question.getAnswer4());
         questionField.setText(question.getQuestion());
 
-        String filename = question.getImageName();
-        InputStream inputStream = null;
-        try {
-            inputStream = getActivity().getApplicationContext().getAssets().open(filename);
-            Drawable d = Drawable.createFromStream(inputStream, null);
-            imageView.setImageDrawable(d);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String url = question.getImageName();
+        Glide.with(getActivity().getApplicationContext()).load(url).into(imageView);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
     }
 }

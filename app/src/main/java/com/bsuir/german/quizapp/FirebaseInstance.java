@@ -77,7 +77,7 @@ public class FirebaseInstance {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Record record = snapshot.getValue(Record.class);
                 Log.e("TAG", "onChildAdded: received object record");
-                allRecords.add(record);
+                allRecords.add(0,record);
             }
 
             @Override
