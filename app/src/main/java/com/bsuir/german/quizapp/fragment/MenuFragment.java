@@ -1,5 +1,7 @@
 package com.bsuir.german.quizapp.fragment;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +14,11 @@ import android.widget.Button;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
+import com.bsuir.german.quizapp.activity.MainActivity;
 
 public class MenuFragment extends Fragment {
 
@@ -83,6 +88,10 @@ public class MenuFragment extends Fragment {
                         button5.setVisibility(View.VISIBLE);
                         break;
                     case R.id.records:
+                        if (new FirebaseInstance().getRecords().isEmpty()){
+                            Toast.makeText(getActivity(),"Пожалуйста, подождите...",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
                         fragmentTransaction.replace(R.id.mainFragment, recordsFragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
@@ -128,6 +137,10 @@ public class MenuFragment extends Fragment {
                         textLevels.setVisibility(View.INVISIBLE);
                         break;
                     case R.id.buttonSimleLevel:
+                        if (new FirebaseInstance().getQuestions().isEmpty()){
+                            Toast.makeText(getActivity(),"Пожалуйста, подождите...",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
                         bundle.putInt("level",5);
                         questionFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.topFragment, quizTopFragment, "QuizTopFragment");
@@ -136,6 +149,10 @@ public class MenuFragment extends Fragment {
                         fragmentTransaction.commit();
                         break;
                     case R.id.buttonMediumLevel:
+                        if (new FirebaseInstance().getQuestions().isEmpty()){
+                            Toast.makeText(getActivity(),"Пожалуйста, подождите...",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
                         bundle.putInt("level",10);
                         questionFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.topFragment, quizTopFragment, "QuizTopFragment");
@@ -144,6 +161,10 @@ public class MenuFragment extends Fragment {
                         fragmentTransaction.commit();
                         break;
                     case R.id.buttonHardLevel:
+                        if (new FirebaseInstance().getQuestions().isEmpty()){
+                            Toast.makeText(getActivity(),"Пожалуйста, подождите...",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
                         bundle.putInt("level",15);
                         questionFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.topFragment, quizTopFragment, "QuizTopFragment");
@@ -152,6 +173,10 @@ public class MenuFragment extends Fragment {
                         fragmentTransaction.commit();
                         break;
                     case R.id.buttonRandomLevel:
+                        if (new FirebaseInstance().getQuestions().isEmpty()){
+                            Toast.makeText(getActivity(),"Пожалуйста, подождите...",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
                         bundle.putInt("level",0);
                         questionFragment.setArguments(bundle);
                         fragmentTransaction.replace(R.id.topFragment, quizTopFragment, "QuizTopFragment");
@@ -173,4 +198,13 @@ public class MenuFragment extends Fragment {
         return v;
     }
 
+    protected boolean isOnline() {
+        String cs = Context.CONNECTIVITY_SERVICE;
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(cs);
+        if (cm.getActiveNetworkInfo() == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

@@ -28,8 +28,8 @@
         android:id="@+id/records"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="168dp"
         android:paddingVertical="20dp"
-        android:layout_marginBottom="200dp"
         android:text="@string/records"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,15 +55,15 @@
         android:id="@+id/buttonMediumLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="30dp"
-        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorMedium"
         android:clickable="false"
         android:text="@string/medium"
-        android:background="@color/colorMedium"
+        android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonHardLevel"
         app:layout_constraintEnd_toEndOf="@+id/play"
-        app:layout_constraintHorizontal_bias="0.524"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
@@ -84,27 +84,29 @@
         android:id="@+id/buttonRandomLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="28dp"
+        android:background="@color/colorRandom"
         android:clickable="false"
         android:text="@string/random"
-        android:background="@color/colorRandom"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="32dp"
         android:clickable="false"
         android:text="@string/back"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <TextView

@@ -8,6 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <Button
         android:id="@+id/play"
         android:layout_width="0dp"
@@ -19,16 +20,16 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/records"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.743" />
+        app:layout_constraintVertical_bias="0.816" />
 
     <Button
         android:id="@+id/records"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="280dp"
+        android:layout_marginBottom="248dp"
         android:paddingVertical="25dp"
         android:text="@string/records"
         android:textSize="20sp"
@@ -41,7 +42,7 @@
         android:id="@+id/buttonSimleLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorEasy"
         android:clickable="false"
         android:text="@string/simple"
@@ -49,14 +50,14 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonMediumLevel"
         app:layout_constraintEnd_toEndOf="@+id/buttonMediumLevel"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/buttonMediumLevel" />
 
     <Button
         android:id="@+id/buttonMediumLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="44dp"
         android:background="@color/colorMedium"
         android:clickable="false"
         android:text="@string/medium"
@@ -64,13 +65,14 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonHardLevel"
         app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
         android:id="@+id/buttonHardLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="40dp"
         android:background="@color/colorHard"
         android:clickable="false"
         android:text="@string/hard"
@@ -78,14 +80,13 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonRandomLevel"
         app:layout_constraintEnd_toEndOf="@+id/play"
-        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
         android:id="@+id/buttonRandomLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="36dp"
         android:background="@color/colorRandom"
         android:clickable="false"
         android:text="@string/random"

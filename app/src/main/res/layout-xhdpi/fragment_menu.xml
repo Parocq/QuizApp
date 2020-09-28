@@ -28,7 +28,7 @@
         android:id="@+id/records"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="280dp"
+        android:layout_marginBottom="132dp"
         android:paddingVertical="20dp"
         android:text="@string/records"
         android:textSize="20sp"
@@ -41,7 +41,7 @@
         android:id="@+id/buttonSimleLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorEasy"
         android:clickable="false"
         android:text="@string/simple"
@@ -56,7 +56,7 @@
         android:id="@+id/buttonMediumLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorMedium"
         android:clickable="false"
         android:text="@string/medium"
@@ -64,13 +64,14 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonHardLevel"
         app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
         android:id="@+id/buttonHardLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="24dp"
         android:background="@color/colorHard"
         android:clickable="false"
         android:text="@string/hard"
@@ -78,14 +79,14 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonRandomLevel"
         app:layout_constraintEnd_toEndOf="@+id/play"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
         android:id="@+id/buttonRandomLevel"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="20dp"
         android:background="@color/colorRandom"
         android:clickable="false"
         android:text="@string/random"
@@ -93,20 +94,20 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonBack"
         app:layout_constraintEnd_toEndOf="@+id/play"
-        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="308dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="32dp"
         android:clickable="false"
         android:text="@string/back"
         android:textSize="20sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/play"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="@+id/play" />
 
     <TextView
@@ -122,9 +123,9 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/buttonSimleLevel"
         app:layout_constraintEnd_toEndOf="@+id/buttonSimleLevel"
-        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toStartOf="@+id/buttonSimleLevel"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.568" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
