@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.dao.DAORecord;
 import com.bsuir.german.quizapp.entity.Record;
@@ -43,7 +44,7 @@ public class ResultsFragment extends Fragment {
             points = bundle.getInt("points");
         }
         initializeViews(v);
-        setPoints(points);
+        resultPoints.setText(String.valueOf(points));
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         Date date = new Date();
@@ -55,8 +56,11 @@ public class ResultsFragment extends Fragment {
             public void onClick(View v) {
                 String name = String.valueOf(inputNameField.getText());
 
-                DAORecord daoRecord = new DAORecord(db);
-                daoRecord.insertRecord(db,name,points,timeFinished);
+//                DAORecord daoRecord = new DAORecord(db);
+//                daoRecord.insertRecord(db,name,points,timeFinished);
+                Record record = new Record(name,points,timeFinished);
+                new FirebaseInstance().insertRecord(record);
+
                 clearBackStack();
             }
         };
@@ -80,9 +84,5 @@ public class ResultsFragment extends Fragment {
         inputNameField = v.findViewById(R.id.inputNameField);
         resultPoints = v.findViewById(R.id.pointsResult);
         dateFinished = v.findViewById(R.id.dateFinished);
-    }
-
-    public void setPoints (int points){
-        resultPoints.setText(String.valueOf(points));
     }
 }

@@ -50,12 +50,6 @@ public class RecordsFragment extends Fragment {
         recordList = new FirebaseInstance().getRecords();
         Log.e("TAG", "fillRecordList: " + recordList.size() );
         //daoRecord.selectAllRecordsOrderedByScore();
-
         return recordList;
     }
-
-    //    private List<Record> fillRecordList(){
-//
-//        return
-//    }
 }

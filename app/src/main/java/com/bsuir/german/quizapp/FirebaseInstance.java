@@ -106,6 +106,10 @@ public class FirebaseInstance {
         return allRecords;
     }
 
+    public void insertRecord(Record record){
+        firebaseRecordsReference.child(""+record.hashCode()).setValue(record);
+    }
+
     /*
             DatabaseReference reference = FirebaseInstance.firebaseRecordsReference.child("/record_2");
         Record record = new Record("Test2",0,"10-20-3000");
