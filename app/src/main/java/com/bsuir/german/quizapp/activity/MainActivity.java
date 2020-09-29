@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
     }
 
 
-
     //video ad
     @Override
     public void onRewardedVideoAdLoaded() {
