@@ -21,7 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.bsuir.german.quizapp.activity.MainActivity.db;
+//import static com.bsuir.german.quizapp.activity.MainActivity.db;
 
 /**
  * A simple {@link Fragment} subclass.

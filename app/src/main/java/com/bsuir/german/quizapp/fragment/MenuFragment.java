@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
 import com.bsuir.german.quizapp.activity.MainActivity;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class MenuFragment extends Fragment {
 
@@ -35,6 +37,13 @@ public class MenuFragment extends Fragment {
         final QuestionFragment questionFragment = new QuestionFragment();
         final QuizTopFragment quizTopFragment = new QuizTopFragment();
         final Bundle bundle = new Bundle();
+
+        //adMob
+        final AdView adView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        adView.loadAd(adRequest);
 
         ///////////////////////////////////////
         final Button button1,button2,button3,button4,button5;
@@ -56,6 +65,8 @@ public class MenuFragment extends Fragment {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.play:
+                        adView.setVisibility(View.INVISIBLE);
+
                         playButton.startAnimation(animGone);
                         recordsButton.startAnimation(animGone);
 
@@ -69,11 +80,7 @@ public class MenuFragment extends Fragment {
                         button5.startAnimation(animAppears);
                         playButton.setClickable(false);
                         recordsButton.setClickable(false);
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
                         playButton.setVisibility(View.INVISIBLE);
                         recordsButton.setVisibility(View.INVISIBLE);
                         button1.setClickable(true);
@@ -92,6 +99,8 @@ public class MenuFragment extends Fragment {
                             Toast.makeText(getActivity(),"Пожалуйста, подождите...",Toast.LENGTH_SHORT).show();
                             break;
                         }
+                        adView.setVisibility(View.INVISIBLE);
+
                         fragmentTransaction.replace(R.id.mainFragment, recordsFragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
@@ -120,11 +129,7 @@ public class MenuFragment extends Fragment {
                         button3.setClickable(false);
                         button4.setClickable(false);
                         button5.setClickable(false);
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+
                         playButton.setVisibility(View.VISIBLE);
                         recordsButton.setVisibility(View.VISIBLE);
                         playButton.setClickable(true);
@@ -135,6 +140,8 @@ public class MenuFragment extends Fragment {
                         button4.setVisibility(View.INVISIBLE);
                         button5.setVisibility(View.INVISIBLE);
                         textLevels.setVisibility(View.INVISIBLE);
+
+                        adView.setVisibility(View.VISIBLE);
                         break;
                     case R.id.buttonSimleLevel:
                         if (new FirebaseInstance().getQuestions().isEmpty()){

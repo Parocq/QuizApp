@@ -8,6 +8,12 @@
         android:id="@+id/update_records_table"
         android:icon="@drawable/ic_baseline_refresh_24"
         android:title="Refresh records"
-        app:showAsAction="always"></item>
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/button_menu_watch_ad"
+        android:icon="@drawable/ic_baseline_video_library_24"
+        android:title="Show ad"
+        app:showAsAction="always" />
 
 </menu>

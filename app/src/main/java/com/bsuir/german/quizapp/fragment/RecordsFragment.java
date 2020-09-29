@@ -23,12 +23,12 @@ import com.bsuir.german.quizapp.entity.Record;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bsuir.german.quizapp.activity.MainActivity.db;
+//import static com.bsuir.german.quizapp.activity.MainActivity.db;
 
 
 public class RecordsFragment extends Fragment {
 
-    private DAORecord daoRecord = new DAORecord(db);
+//    private DAORecord daoRecord = new DAORecord(db);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

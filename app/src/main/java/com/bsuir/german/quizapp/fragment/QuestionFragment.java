@@ -29,7 +29,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.bsuir.german.quizapp.activity.MainActivity.db;
+//import static com.bsuir.german.quizapp.activity.MainActivity.db;
 
 public class QuestionFragment extends Fragment {
 
@@ -38,7 +38,7 @@ public class QuestionFragment extends Fragment {
     private LinearLayout linearLayoutTop, linearLayoutBottom;
     private ImageView imageView;
     private TextView questionField;
-    private DAOQuestion daoQuestion = new DAOQuestion(db);
+//    private DAOQuestion daoQuestion = new DAOQuestion(db);
     private QuizTopFragment quizTopFragment;
     private static int level;
     private static List<Question> questionsForThisTime;
