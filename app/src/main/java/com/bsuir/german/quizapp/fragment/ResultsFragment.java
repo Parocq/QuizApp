@@ -70,6 +70,12 @@ public class ResultsFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onDetach() {
+        clearBackStack();
+        super.onDetach();
+    }
+
     private void clearBackStack() {
         FragmentManager manager = getFragmentManager();
         if (manager.getBackStackEntryCount() > 0) {

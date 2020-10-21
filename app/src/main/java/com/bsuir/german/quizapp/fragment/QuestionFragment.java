@@ -1,13 +1,6 @@
 package com.bsuir.german.quizapp.fragment;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-//import android.app.Fragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +10,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bsuir.german.quizapp.BuildConfig;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.bsuir.german.quizapp.FirebaseInstance;
 import com.bsuir.german.quizapp.R;
-import com.bsuir.german.quizapp.dao.DAOQuestion;
 import com.bsuir.german.quizapp.entity.Question;
 import com.bumptech.glide.Glide;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+//import android.app.Fragment;
 
 //import static com.bsuir.german.quizapp.activity.MainActivity.db;
 
@@ -38,7 +32,7 @@ public class QuestionFragment extends Fragment {
     private LinearLayout linearLayoutTop, linearLayoutBottom;
     private ImageView imageView;
     private TextView questionField;
-//    private DAOQuestion daoQuestion = new DAOQuestion(db);
+    //    private DAOQuestion daoQuestion = new DAOQuestion(db);
     private QuizTopFragment quizTopFragment;
     private static int level;
     private static List<Question> questionsForThisTime;
@@ -104,10 +98,21 @@ public class QuestionFragment extends Fragment {
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
                             );
                             Toast.makeText(getContext(), "Верно", Toast.LENGTH_SHORT).show();
+                            v.setBackgroundColor(getResources().getColor(R.color.colorEasy));
                         } else {
                             Toast.makeText(getContext(), "Не верно", Toast.LENGTH_SHORT).show();
+                            v.setBackgroundColor(getResources().getColor(R.color.colorHard));
                         }
-                        getNextQuestion();
+
+                        v.postDelayed(
+                                new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        getNextQuestion();
+                                    }
+                                }
+                                , 1000
+                        );
                     }
                 }
             }
@@ -119,6 +124,9 @@ public class QuestionFragment extends Fragment {
     }
 
     public void getNextQuestion() {
+        for (Button button : buttonsArray) {
+            button.setBackgroundColor(getResources().getColor(R.color.colorLowGray));
+        }
         if (!questionsForThisTime.isEmpty()) {
             setupNewQuestion(questionsForThisTime.get(0));
             setOnClickListeners(questionsForThisTime.get(0));
@@ -148,7 +156,6 @@ public class QuestionFragment extends Fragment {
 //            allQuestions = daoQuestion.selectAllQuestionsByLevel(level);
             //выбирает только вопросы с нужной сложностью
             allQuestions = new FirebaseInstance().getQuestions(level);
-
         }
         for (int i = 0; i < 10; i++) {
             int num = generateNumber(allQuestions.size());
