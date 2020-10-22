@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
 
         setTitle("Rewards count: "+ rewardCounter);
 
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+               MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }

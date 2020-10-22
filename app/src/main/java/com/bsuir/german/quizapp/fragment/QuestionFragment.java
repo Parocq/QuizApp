@@ -93,6 +93,8 @@ public class QuestionFragment extends Fragment {
             public void onClick(View v) {
                 for (int i = 101; i < 105; i++) {
                     if (v.getId() == i) {
+                        disableAllButtons();
+
                         if (question.getRightAnswerId() == i - 100) {
                             quizTopFragment.setPoints(
                                     String.valueOf(Integer.parseInt(quizTopFragment.getPoints()) + question.getPoints())
@@ -123,10 +125,23 @@ public class QuestionFragment extends Fragment {
         }
     }
 
+    private void disableAllButtons(){
+        for (Button button: buttonsArray){
+            button.setClickable(false);
+        }
+    }
+
+    private void enableAllButtons(){
+        for (Button button: buttonsArray){
+            button.setClickable(true);
+        }
+    }
+
     public void getNextQuestion() {
         for (Button button : buttonsArray) {
             button.setBackgroundColor(getResources().getColor(R.color.colorLowGray));
         }
+        enableAllButtons();
         if (!questionsForThisTime.isEmpty()) {
             setupNewQuestion(questionsForThisTime.get(0));
             setOnClickListeners(questionsForThisTime.get(0));
