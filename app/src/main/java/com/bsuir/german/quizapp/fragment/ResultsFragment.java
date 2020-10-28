@@ -60,7 +60,6 @@ public class ResultsFragment extends Fragment {
 //                daoRecord.insertRecord(db,name,points,timeFinished);
                 Record record = new Record(name,points,timeFinished);
                 new FirebaseInstance().insertRecord(record);
-                FirebaseInstance.extractRecordsFromFirebase();
 
                 clearBackStack();
             }

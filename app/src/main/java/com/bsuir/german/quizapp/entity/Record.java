@@ -1,11 +1,13 @@
 package com.bsuir.german.quizapp.entity;
 
+import java.util.Objects;
+
 public class Record {
     private int score;
     private String name;
     private String date;
 
-    public Record(){
+    public Record() {
     }
 
     @Override
@@ -26,6 +28,18 @@ public class Record {
                 ", name='" + name + '\'' +
                 ", date='" + date + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        Record record = (Record) o;
+        if (this.date == record.date &&
+                this.name == record.name &&
+                this.score == record.score
+        ) {
+            return true;
+        } else return false;
     }
 
     public int getScore() {

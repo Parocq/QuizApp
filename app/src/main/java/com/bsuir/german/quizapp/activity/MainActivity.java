@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.update_records_table: {
+                Toast.makeText(this, "update records", Toast.LENGTH_SHORT).show();
                 FirebaseInstance.extractRecordsFromFirebase();
             }
             case R.id.button_menu_watch_ad: {
@@ -102,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements RewardedVideoAdLi
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResumeFragments() {
+        FirebaseInstance.extractRecordsFromFirebase();
+        super.onResumeFragments();
+    }
 
     protected boolean isOnline() {
         String cs = Context.CONNECTIVITY_SERVICE;
